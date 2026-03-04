@@ -1,5 +1,5 @@
 import ui, engine, config
-from Physics import state
+from Physics import state, integrators
 
 def main():
 
@@ -7,7 +7,8 @@ def main():
     settings = config.init()
     screen, clock, running = ui.init(settings)
     sim_state = state.init(settings)
-    sim_engine = engine.Engine(settings)
+    integrator = integrators.Velocity_verlet()
+    sim_engine = engine.Engine(sim_state, settings, integrator)
 
     # get physics dt and initialise physics/render accumulator correction
     phys_dt = settings.dt

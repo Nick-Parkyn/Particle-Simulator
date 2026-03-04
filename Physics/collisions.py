@@ -18,7 +18,7 @@ def detect_collisions(state):
              if dist <= p_i.radius + p_j.radius:
                   
                   # add particle indices and direction of collision
-                  normal = (numpy.array(p_j.position) - numpy.array(p_i.position)) / dist
+                  normal = (p_j.position - p_i.position) / dist
                   collisions.append([i, j, normal])
     
     return collisions
@@ -32,7 +32,7 @@ def resolve_collisions(state, collisions):
         p_j = state.particles[j]
 
         # get relative velocity along the direction of impact
-        rel_vel = numpy.array(p_j.velocity) - numpy.array(p_i.velocity)
+        rel_vel = p_j.velocity - p_i.velocity
         vel_normal = numpy.dot(rel_vel, normal)
 
         # only apply collision if particles are moving towards each other
@@ -52,12 +52,15 @@ def resolve_collisions(state, collisions):
     
     return state
 
+# collisions with walls of sim
 def wall_collisions(state, config):
     for particle in state.particles:
 
+        # if edge of particle is touching left or right wall
         if particle.position[0] + particle.radius > config.size[0] or particle.position[0] - particle.radius < 0:
             particle.velocity[0] *= -1
 
+        # if edge of particle is touching top or bottom wall
         if particle.position[1] + particle.radius > config.size[1] or particle.position[1] - particle.radius < 0:
             particle.velocity[1] *= -1
     
