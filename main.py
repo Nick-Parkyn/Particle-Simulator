@@ -18,7 +18,6 @@ def main():
         # frame dt and accumulator
         frame_dt = clock.tick()/1000
         accumulator += frame_dt
-        frame_count += 1
 
         # run physics engine
         while accumulator >= frame_dt:
@@ -27,14 +26,6 @@ def main():
         
         # draw ui
         running = ui.loop(sim_state, screen, running)
-
-
-        
-
-
-    
-
-
 
 if __name__ == "__main__":
     main()

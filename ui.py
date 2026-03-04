@@ -3,7 +3,7 @@ import pygame as py
 # initialise pygame display and clock objects, and set sim to run
 def init(config):
     py.init()
-    screen = py.display.set_mode((1200, 800), py.RESIZABLE)
+    screen = py.display.set_mode(config.size, py.RESIZABLE)
     py.display.set_caption("Particle Simulator V0")
     clock = py.Clock()
     running = True
@@ -19,7 +19,7 @@ def loop(state, screen, running):
             running = False
     
     for particle in state.particles:
-        py.draw.circle(screen, (255, 255, 255), (particle.position[0], particle.position[1]), 10)
+        py.draw.circle(screen, (255, 255, 255), (particle.position[0], particle.position[1]), particle.radius)
     
     py.display.flip()
     
