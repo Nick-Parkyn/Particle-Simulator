@@ -18,6 +18,6 @@ class State:
 
 def init(config):
     state = State(config)
-    state.add_particle(Particle([600, 400, 0], [200, 300, 0], 10))
-    state.add_particle(Particle([400, 600, 0], [400, 100, 0], 15))
+    state.add_particle(Particle([600, 400, 0], [0, 0, 0], 15))
+    state.add_particle(Particle([200, 400, 0], [0, -300, 0], 5))
     return state

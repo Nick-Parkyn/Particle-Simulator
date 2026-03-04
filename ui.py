@@ -4,7 +4,7 @@ import pygame as py
 def init(config):
     py.init()
     screen = py.display.set_mode(config.size, py.RESIZABLE)
-    py.display.set_caption("Particle Simulator V0")
+    py.display.set_caption("Particle Simulator V2")
     clock = py.Clock()
     running = True
     return screen, clock, running
